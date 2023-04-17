@@ -27,6 +27,7 @@ module.exports = (req, res, next) => {
 }
 */
 
+
 exports.signup = (req, res, next) => {
 
     if (!emailValidator.validate(req.body.email)) return res.status(403).json({ message: 'Le format adresse mail est incorrect !' })
