@@ -1,10 +1,7 @@
 const bcrypt = require('bcrypt');
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
-const dotenv = require("dotenv").config(); //Importation de dotenv pour les variables d'environement
 const emailValidator = require('email-validator');// email validator package
-const cryptojs = require('crypto-js'); //Importation de crypto-js pour chiffrer le mail
-const passwordValidator = require('password-validator'); // Importation password validator package
 
 exports.signup = (req, res, next) => {
 const maxPasswordLength = 8

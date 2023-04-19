@@ -7,8 +7,6 @@ const userSchema = mongoose.Schema({ // Schema du modèle user exigé
     password: { type : String, required: true}
 });
 
-console.log('Dans models userSchema new : ' , userSchema)
-
 //userSchema.plugin(uniqueValidator); // utilisation du package. Il semble qu'il y ait un probleme de version !!!
 
 module.exports = mongoose.model('User', userSchema); // Classe 'User' dans ../models/User

@@ -1,6 +1,5 @@
 const http = require('http');
 const app = require('./app');
-const dotenv = require("dotenv").config();
 
 // Renvoie un port accepté et valide 
 const normalizePort = val => {

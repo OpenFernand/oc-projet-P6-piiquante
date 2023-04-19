@@ -5,7 +5,6 @@ const saucesRoutes = require('./routes/sauce'); // Importe la route dédiée aux
 const userRoutes = require('./routes/user'); // Importe la route dédiée aux users
 const helmet = require('helmet'); // Module 'helmet' pour la sécurité en protégeant l'application de certaines vulnérabilités
 const path = require('path');  // Plugin qui sert dans l'upload des images et permet de travailler avec les répertoires et chemin de fichier
-const dotenv = require("dotenv").config(); //Importation de dotenv pour les variables d'environement
 
 const app = express();// Création d'une application express (utilisation du framework express) 
 
