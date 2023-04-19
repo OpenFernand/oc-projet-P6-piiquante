@@ -6,46 +6,24 @@ const emailValidator = require('email-validator');// email validator package
 const cryptojs = require('crypto-js'); //Importation de crypto-js pour chiffrer le mail
 const passwordValidator = require('password-validator'); // Importation password validator package
 
-/*
-const passwordSchema = new passwordValidator(); //création du schéma
-passwordSchema //le schéma doit respecter le mot de passe 
-    .is().min(8)                                    // Minimum length 8
-    .is().max(50)                                  // Maximum length 50
-    .has().uppercase()                              // Must have uppercase letters
-    .has().lowercase()                              // Must have lowercase letters
-    .has().digits()                                // Must have at least 1 digit
-    .has().not().spaces();                         // Has no espaces
-
-//vérification de la qualité du password par rapport au schéma :
-module.exports = (req, res, next) => {
-    if(passwordSchema.validate(req.body.password)){
-        next();
-    }
-    else{
-        res.status(400).json({error : `Le mot de passe n'est pas assez fort ${passwordSchema.validate('req.body.password', {list: true})}`})
-    }
-}
-*/
-
-
 exports.signup = (req, res, next) => {
-const maxPasswordLength = 5
+const maxPasswordLength = 8
     if (!emailValidator.validate(req.body.email)) return res.status(403).json({ message: 'Le format adresse mail est incorrect !' })
     if (req.body.password.length > maxPasswordLength) {
-        User.findOne({ email: req.body.email }) // unicite du mail : d'abord, on cherche un potentiel utilisateur déjà inscrit avec le même email
+        User.findOne({ email: req.body.email }) // unicite du email : d'abord, on cherche un potentiel utilisateur déjà inscrit avec le même email
             .then((oldUser) => {
-                if (oldUser) {  //un utilisateur inscrit avec le même email existe, alors retourne une réponse
+                if (oldUser) {  // utilisateur inscrit avec le même email existant, alors retourne une réponse
                     return res.status(409).json({ message: 'Identifiant / mot de passe incorrect !' });
 
                 } else {  // pas d'utilisateur déjà inscrit avec le même email, on peut inscrire le nouvel utilisateur
                     bcrypt.hash(req.body.password, 10)
                         .then((hash) => {
                             const newUser = new User({  // créer un nouveau user
-                                email: req.body.email,  // l'adresse mail
-                                password: hash,  // le mot de passe haché
+                                email: req.body.email,  
+                                password: hash,  
                             });
 
-                            newUser.save()
+                            newUser.save() // sauvegarde du nouveau user
                                 .then(() => res.status(201).json({ message: 'Utilisateur créé YES!!!!' }))
                                 .catch((error) => res.status(400).json({ error }));
                         })
@@ -62,12 +40,12 @@ exports.login = (req, res, next) => {
     User.findOne({ email: req.body.email }) // vérifie l'existence de l'adresse mail dans BDD
         .then(user => {
             if (!user) {
-                return res.status(401).json({ message: 'Paire login/mot de passe incorrecte' });
+                return res.status(401).json({ message: 'Identifiant / mot de passe incorrect !' });
             }
             bcrypt.compare(req.body.password, user.password) // si existence de user, comparaison des passwords
                 .then(valid => {
                     if (!valid) {
-                        return res.status(401).json({ message: 'Paire login/mot de passe incorrecte' });
+                        return res.status(401).json({ message: 'Identifiant / mot de passe incorrect !' });
                     }
                     res.status(200).json({
                         userId: user._id,
