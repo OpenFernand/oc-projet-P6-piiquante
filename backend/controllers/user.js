@@ -29,13 +29,13 @@ module.exports = (req, res, next) => {
 
 
 exports.signup = (req, res, next) => {
-
+const maxPasswordLength = 5
     if (!emailValidator.validate(req.body.email)) return res.status(403).json({ message: 'Le format adresse mail est incorrect !' })
-    if (req.body.password.length > 5) {
+    if (req.body.password.length > maxPasswordLength) {
         User.findOne({ email: req.body.email }) // unicite du mail : d'abord, on cherche un potentiel utilisateur déjà inscrit avec le même email
             .then((oldUser) => {
                 if (oldUser) {  //un utilisateur inscrit avec le même email existe, alors retourne une réponse
-                    return res.status(409).json({ message: 'L adresse mail existe déja' });
+                    return res.status(409).json({ message: 'Identifiant / mot de passe incorrect !' });
 
                 } else {  // pas d'utilisateur déjà inscrit avec le même email, on peut inscrire le nouvel utilisateur
                     bcrypt.hash(req.body.password, 10)
@@ -53,8 +53,8 @@ exports.signup = (req, res, next) => {
                 }
             })
             .catch((error) => res.status(500).json({ error }));
-    } else return res.status(403).json({ message: 'Le mot de passe doit contenir 6 caractères minimum !' });
-};
+    } else return res.status(403).json({ message: `Le mot de passe doit contenir ${maxPasswordLength} caractères minimum !` });
+}
 
 // Connexion de l'utilisateur
 exports.login = (req, res, next) => {
