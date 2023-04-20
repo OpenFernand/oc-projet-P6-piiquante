@@ -28,4 +28,4 @@ ou prendre le fichier .example.env, mettre les bonnes valeurs et modifier le nom
 
 - et enfin, taper :
 
-$ nodemon ou npm start 
+$ nodemon ou npm start
