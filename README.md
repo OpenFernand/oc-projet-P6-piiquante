@@ -2,7 +2,9 @@
 
 Construisez une API sécurisée pour une application d'avis gastronomiques
 
-Installation et mise en service du backend :
+Installation et mise en service du backend et exécution du frontend
+
+Backend :
 
 - téléchargement du PROJET ci-dessous :
 
@@ -29,3 +31,15 @@ ou prendre le fichier .example.env, mettre les bonnes valeurs et modifier le nom
 - et enfin, taper :
 
 $ nodemon ou npm start
+
+Frontend :
+
+Le frontend était fourni dans le cadre de ce projet.
+
+Taper les instructions ci-dessous : 
+
+$ cd frontend
+
+$ npm run start
+
+Depuis votre navigateur, rendez-vous sur `http://localhost:4200/` pour accéder à l'application en tant que utilisateur
