@@ -4,13 +4,13 @@ Construisez une API sécurisée pour une application d'avis gastronomiques
 
 Installation et mise en service du backend :
 
-- après avoir dezzipé le fichier backup.zip, dans le TERMINAL ouvrir le dossier backup
+- après avoir dezzipé le fichier backend.zip, dans le TERMINAL ouvrir le dossier backend
 
-- puis, se mettre dans le dossier backup pour taper :
+- puis, se mettre dans le dossier backend pour taper :
 
 $ npm install --force
 
-- puis, pour se connecter à une base de donnée mongoDB, prendre le fichier .example.env, mettre les bonnes valeurs ci-dessous :
+- puis, afin de se connecter à une base de donnée mongoDB, prendre le fichier .example.env, mettre les bonnes valeurs ci-dessous :
 
 PORT = 3000 (le front fonctionne bien avec le backend sur le port 3000)
 
