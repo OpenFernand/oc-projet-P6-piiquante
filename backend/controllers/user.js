@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt');
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 const emailValidator = require('email-validator');// email validator package
-
+ 
 exports.signup = (req, res, next) => {
 const maxPasswordLength = 8
     if (!emailValidator.validate(req.body.email)) return res.status(403).json({ message: 'Le format adresse mail est incorrect !' })
