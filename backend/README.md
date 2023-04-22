@@ -10,7 +10,7 @@ Installation et mise en service du backend :
 
 $ npm install --force
 
-- puis, afin de se connecter à une base de donnée mongoDB, prendre le fichier .example.env, mettre les bonnes valeurs ci-dessous :
+- puis, afin de se connecter à une base de donnée mongoDB, prendre le fichier .example.env, mettre les bonnes valeurs ci-dessous et renommer le fichier en .env :
 
 PORT = 3000 (le front fonctionne bien avec le backend sur le port 3000)
 
