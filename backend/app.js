@@ -19,7 +19,7 @@ mongoose.connect(`mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASS
 
 app.use(express.json());
 
-// CORS - partage de ressources entre serveurs
+// CORS - partage de ressources entre serveurs et empèche les errreurs grâce aux headers de contrôle
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');

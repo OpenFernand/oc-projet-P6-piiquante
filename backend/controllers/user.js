@@ -3,8 +3,9 @@ const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 const emailValidator = require('email-validator');// email validator package
  
+// Inscription de l'utilisateur
 exports.signup = (req, res, next) => {
-const maxPasswordLength = 8
+const maxPasswordLength = 7
     if (!emailValidator.validate(req.body.email)) return res.status(403).json({ message: 'Le format adresse mail est incorrect !' })
     if (req.body.password.length > maxPasswordLength) {
         User.findOne({ email: req.body.email }) // unicite du email : d'abord, on cherche un potentiel utilisateur déjà inscrit avec le même email
